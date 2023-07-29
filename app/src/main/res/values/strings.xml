@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">ClickADay</string>
+    <string name="ERROR">Une erreur est survenue</string>
+
+
+    <!-- PictureActivity -->
+    <string name="take_photo">Capture</string>
+    <string name="Return_camera">Return</string>
+    <string name="capture_photo_ok">Photo prise avec succès</string>
+
+    <!-- VerifActivity -->
+    <string name="save_picture">SAVE</string>
+    <string name="do_picture_again">Retour</string>
+    <string name="add_description">Description</string>
+    <string name="title_verif">Enregistrer cette photo ?</string>
+    <string name="change_description_ok">La description à été ajoutée</string>
+    <string name="change_description_failed">La description n\'a pas pu être ajoutée</string>
+    <string name="missing_file_description_failed">La photo n\'est pas enregistrée. Impossible d\'ajouter la description</string>
+    <string name="picture_delete">La photo à été supprimée</string>
+    <string name="picture_save_with_description">La photo et la description ont été sauvegardés</string>
+    <string name="picture_save_no_description">La photo à été sauvegardée</string>
+
+    <!-- MainActivity-->
+    <string name="go_to_activity_photo">Photo</string>
+    <string name="key_previous_orientation">PREVIOUS_ORIENTATION</string>
+    <string name="picture_taken_hours_add">
+        La photo à été prise aujourd\'hui à &#160;</string>
+    <string name="picture_not_taken_hours_add">
+        Pas de photo prise aujourd\'hui
+        La dernière photo à été prise le&#160;</string>
+    <string name="picture_moved_empty_folder">
+        Les photo de Daily on été déplacées, le dossier est vide</string>
+    <string name="picture_not_taken_since_a_while">
+        \nCa fait quand même&#160;</string>
+    <string name="permissions_issues">La permission n\'a pas été accordée</string>
+
+</resources>

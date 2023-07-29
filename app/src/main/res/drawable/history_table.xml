@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Header 1 -->
+<item
+    android:left="0dp"
+
+    android:height="@dimen/header_height"
+    android:width="@dimen/header_width">
+    <shape
+        android:shape="rectangle">
+        <corners
+            android:radius="0dp" />
+        <stroke
+            android:width="@dimen/header_line_width"
+            android:color="@color/color_line" />
+    </shape>
+</item>
+    <!-- Header 2 -->
+    <item
+        android:left="57dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape
+            android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Header 3 -->
+    <item
+        android:left="114dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Header 4 -->
+    <item
+        android:left="171dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Header 5 -->
+    <item
+        android:left="228dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Header 6 -->
+    <item
+        android:left="285dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Header 7 -->
+    <item
+        android:left="342dp"
+
+        android:height="@dimen/header_height"
+        android:width="@dimen/header_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="0dp" />
+            <stroke
+                android:width="@dimen/header_line_width"
+                android:color="@color/color_line" />
+        </shape>
+
+    </item>
+
+<!-- Column 1 -->
+<item
+    android:left="0dp"
+
+    android:top="@dimen/cell_disp_height"
+    android:height="@dimen/cell_height"
+    android:width="@dimen/cell_width">
+    <shape android:shape="rectangle">
+        <corners
+            android:radius="@dimen/cell_radius" />
+        <stroke
+            android:width="@dimen/cell_line_width"
+            android:color="@color/color_line" />
+    </shape>
+</item>
+    <!-- Column 2 -->
+    <item
+        android:left="57dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Column 3 -->
+    <item
+        android:left="114dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Column 4 -->
+    <item
+        android:left="171dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Column 5 -->
+    <item
+        android:left="228dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Column 6 -->
+    <item
+        android:left="285dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+    <!-- Column 7 -->
+    <item
+        android:left="342dp"
+
+        android:top="@dimen/cell_disp_height"
+        android:height="@dimen/cell_height"
+        android:width="@dimen/cell_width">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/cell_radius" />
+            <stroke
+                android:width="@dimen/cell_line_width"
+                android:color="@color/color_line" />
+        </shape>
+    </item>
+</layer-list>
+

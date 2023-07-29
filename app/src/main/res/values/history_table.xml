@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="color_line">@color/clickaday_background_color</color>
+    <!-- Header-->
+    <dimen name="header_height">35sp</dimen>
+    <dimen name="header_width">61dp</dimen>
+    <dimen name="header_line_width">4sp</dimen>
+    <dimen name="header_radius">0dp</dimen>
+
+    <!--Cell Table-->
+        <!--Cell disposition-->
+        <dimen name="cell_disp_height">31sp</dimen>
+        <!--Cell dimensions-->
+        <dimen name="cell_height">85dp</dimen>
+        <dimen name="cell_width">61dp</dimen>
+        <dimen name="cell_line_width">4sp</dimen>
+        <dimen name="cell_radius">0dp</dimen>
+
+        <dimen name="text_view_width">57dp</dimen>
+
+
+
+
+</resources>
