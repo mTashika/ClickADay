@@ -21,6 +21,10 @@ import java.util.concurrent.Executors
 
 
 class PictureActivity : AppCompatActivity() {
+    /**
+     * Constant for the picture activity
+     * @author Mathieu Castera
+     */
     companion object {
         @SuppressLint("StaticFieldLeak")
         private lateinit var viewBinding: ActivityTakepictureBinding
@@ -30,13 +34,16 @@ class PictureActivity : AppCompatActivity() {
 
         private const val TAG = "ClickADay"
         private const val FILENAME_FORMAT = "yyyy_MM_dd_HH_mm_ss"
-        var NAME_CURRENT_PICTURE =""
-        private const val PICTURE_TYPE="jpeg"
+        var NAME_CURRENT_PICTURE = ""
+        private const val PICTURE_TYPE = "jpeg"
         const val PICTURE_EXTENTION = ".jpg"
         private const val PICTURE_FIRST_CHARACTERE = "D_"
     }
 
-
+    /**
+     * On create function
+     * @author Mathieu Castera
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityTakepictureBinding.inflate(layoutInflater)
@@ -45,69 +52,81 @@ class PictureActivity : AppCompatActivity() {
 
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
-        viewBinding.returnCameraButton.setOnClickListener{returnCamera()}
-        viewBinding.returnActivityCameraButton.setOnClickListener{closeActivity()}
+        viewBinding.returnCameraButton.setOnClickListener { returnCamera() }
+        viewBinding.returnActivityCameraButton.setOnClickListener { closeActivity() }
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
+    /**
+     * Return the camera
+     * @author Mathieu Castera
+     */
     private fun returnCamera() {
-        if (lensFacing == CameraSelector.DEFAULT_FRONT_CAMERA) lensFacing = CameraSelector.DEFAULT_BACK_CAMERA
-        else if (lensFacing == CameraSelector.DEFAULT_BACK_CAMERA) lensFacing = CameraSelector.DEFAULT_FRONT_CAMERA
+        if (lensFacing == CameraSelector.DEFAULT_FRONT_CAMERA) lensFacing =
+            CameraSelector.DEFAULT_BACK_CAMERA
+        else if (lensFacing == CameraSelector.DEFAULT_BACK_CAMERA) lensFacing =
+            CameraSelector.DEFAULT_FRONT_CAMERA
         startCamera(lensFacing)
     }
 
+    /**
+     * Take a picture
+     * @author Internet
+     */
     private fun takePhoto() {
 
         val imageCapture = imageCapture ?: return
 
         // Create time stamped name and MediaStore entry.
-        val customName= PICTURE_FIRST_CHARACTERE
-        val timeStamp = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
-            .format(System.currentTimeMillis())
+        val customName = PICTURE_FIRST_CHARACTERE
+        val timeStamp =
+            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis())
         val pictureName = "$customName$timeStamp"
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, pictureName)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/${PICTURE_TYPE}")
             put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${MainActivity.PICTURES_FOLDER}")
-
         }
 
         // Create output options object which contains file + metadata
-        val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(contentResolver,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
-            .build()
-
+        val outputOptions = ImageCapture.OutputFileOptions.Builder(
+            contentResolver, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues
+        ).build()
 
         // Set up image capture listener, which is triggered after photo has
         // been taken
-        imageCapture.takePicture(
-            outputOptions,
+        imageCapture.takePicture(outputOptions,
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
-                override fun
-                        onImageSaved(output: ImageCapture.OutputFileResults){
+
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     //val msg = "Photo capture succeeded"
                     //Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     //Log.d(TAG, msg)
-                    NAME_CURRENT_PICTURE=pictureName
+                    NAME_CURRENT_PICTURE = pictureName
                     val intent = Intent(this@PictureActivity, VerifActivity::class.java)
                     startActivity(intent)
                     closeActivity()
                 }
-            }
-        )
+            })
 
     }
 
+    /**
+     * Close current activity
+     * @author Mathieu Castera
+     */
     private fun closeActivity() {
         finish()
     }
 
+    /**
+     * Start the camera
+     * @author Internet
+     */
     private fun startCamera(cameraSelector: CameraSelector) {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
@@ -116,15 +135,10 @@ class PictureActivity : AppCompatActivity() {
             val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 
             // Preview
-            val preview = Preview.Builder()
-                .build()
-                .also {
-                    it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
-                }
+            val preview = Preview.Builder().build().also {
+                it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
+            }
             imageCapture = ImageCapture.Builder().build()
-
-            // Select back camera as a default
-
 
             try {
                 // Unbind use cases before rebinding
@@ -132,16 +146,20 @@ class PictureActivity : AppCompatActivity() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture)
+                    this, cameraSelector, preview, imageCapture
+                )
 
-
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
         }, ContextCompat.getMainExecutor(this))
-
     }
+
+    /**
+     * OnDestroy function we the activity is kill
+     * @author Mathieu Castera
+     */
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
