@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             PICTURES_FOLDER
         )
     }
+
     /**
      * OnCreate function - MainActivity
      * @author Mathieu Castera
@@ -35,15 +36,16 @@ class MainActivity : AppCompatActivity() {
 
         val photoButton = findViewById<Button>(R.id.PictureActivityButton)
 
-        var permissionsResult = getPermissionsResult()
-        if (!permissionsResult) {
-            requestPermissionLauncher()
-            permissionsResult = getPermissionsResult()
-        }
+        requestPermissionLauncher()
+        val permissionsResult = getPermissionsResult()
+
 
         photoButton.setOnClickListener {
             if (permissionsResult) {
                 goToPictureActivity()
+            }
+            else {
+                Toast.makeText(this,"You need permissions to take a picture",Toast.LENGTH_LONG).show()
             }
         }
 
@@ -119,8 +121,8 @@ class MainActivity : AppCompatActivity() {
      * @author Mathieu Castera
      */
     private fun goToPictureActivity() {
-            val intent = Intent(this, PictureActivity::class.java)
-            startActivity(intent)
+        val intent = Intent(this, PictureActivity::class.java)
+        startActivity(intent)
     }
 
     /**
