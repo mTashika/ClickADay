@@ -1,16 +1,15 @@
 package com.clickaday
 
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
-import android.media.ExifInterface
 import android.os.Bundle
 import android.os.Environment
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
+
+import com.clickaday.DisplayImageTools as ImageTools
 
 class VerifActivity : AppCompatActivity() {
     /**
@@ -22,67 +21,24 @@ class VerifActivity : AppCompatActivity() {
         setContentView(R.layout.activity_verifpicture)
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        displayImage()
-        savePicture()
-        returnPictureActivity()
-    }
-
-    /**
-     * Correct the orientation of one picture
-     * @author Mathieu Castera
-     */
-    fun correctOrientation(currentFile: File): Bitmap? {
-        val bitmap = BitmapFactory.decodeFile(currentFile.path)
-
-// Récupérer l'orientation de l'image à l'aide de ExifInterface
-        val exif = ExifInterface(currentFile.path)
-        val orientation =
-            exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED)
-
-// Corriger l'orientation de l'image si nécessaire
-        val rotatedBitmap = when (orientation) {
-            ExifInterface.ORIENTATION_ROTATE_90 -> rotateBitmap(bitmap, 90F)
-            ExifInterface.ORIENTATION_ROTATE_180 -> rotateBitmap(bitmap, 180F)
-            ExifInterface.ORIENTATION_ROTATE_270 -> rotateBitmap(bitmap, 270F)
-            else -> bitmap
-        }
-        return rotatedBitmap
-    }
-
-    /**
-     * Doublon - function to rotate the picture bitmap
-     * @author Mathieu Castera
-     */
-    private fun rotateBitmap(bitmap: Bitmap, degrees: Float): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(degrees)
-        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-    }
-
-    /**
-     * Display image (big one)
-     * @author Mathieu Castera
-     */
-    private fun displayImage() {
         val pictureView = findViewById<ImageView>(R.id.picture_view_verif)
         val directory = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
             MainActivity.PICTURES_FOLDER
         )
 
-        if (directory.exists() && !directory.listFiles()?.isEmpty()!!) {
-            val lastFile = directory.listFiles()!!.get(directory.listFiles()?.size?.minus(1)!!)
-            val bitmap = correctOrientation(lastFile)
-            pictureView.setImageBitmap(bitmap)
-        }
+        ImageTools.displayImage(pictureView,ImageTools.getLastPicture(directory))
+
+        //------ Listener ------
+        savePictureListener()
+        returnPictureActivityListener()
     }
 
     /**
      * Return to the picture activity
      * @author Mathieu Castera
      */
-    private fun returnPictureActivity() {
+    private fun returnPictureActivityListener() {
         val returnButton = findViewById<Button>(R.id.doPictureAgainButton)
         returnButton.setOnClickListener {
             deleteCurrentPicture()
@@ -124,7 +80,7 @@ class VerifActivity : AppCompatActivity() {
      * Save the current picture
      * @author Mathieu Castera
      */
-    private fun savePicture() {
+    private fun savePictureListener() {
         val descriptionText = findViewById<EditText>(R.id.editTextDescription)
         val saveButton = findViewById<Button>(R.id.saveButton)
         saveButton.setOnClickListener {
