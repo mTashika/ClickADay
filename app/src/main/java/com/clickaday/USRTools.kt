@@ -1,6 +1,9 @@
 package com.clickaday
 
 
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.Period
@@ -10,9 +13,40 @@ import java.util.Date
 class USRTools {
     companion object {
         /**
+         * Launch a fragment in the specified layout
+         */
+        fun launchFragment(
+            fragment: Fragment,
+            id_layout: Int,
+            tag_frag: String,
+            fragmentManager: FragmentManager
+        ) {
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(id_layout, fragment, tag_frag)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        /**
+         * Close a fragment with his tag
+         */
+        fun closeFragmentWithTag(
+            tagFrag: String,
+            fragmentManager: FragmentManager
+        ) {
+            val fragment = fragmentManager.findFragmentByTag(tagFrag)
+            if (fragment != null) {
+                val transaction = fragmentManager.beginTransaction()
+                transaction.remove(fragment)
+                transaction.commit()
+            }
+        }
+
+        /**
          * Get the day of the week with year, month and day value
          * @author Internet - Mathieu Castera
          */
+
         fun getDayOfWeek(year: Int, month: Int, day: Int): Int {
             val calendar = Calendar.getInstance()
             calendar.set(year, month - 1, day) // Month is zero-based in Calendar
@@ -36,7 +70,7 @@ class USRTools {
             val years = period.years
             val months = period.months
             val days = period.days
-            val hours :Int
+            val hours: Int
             val minutes: Int
             try {
                 hours = duration.toHoursPart()
@@ -107,6 +141,11 @@ class USRTools {
             return givenWeekOfYear == currentWeekOfYear && givenDate.get(Calendar.YEAR) == currentDate.get(
                 Calendar.YEAR
             )
+        }
+
+        fun sanitizeFileName(fileName: String): String {
+            val invalidCharsRegex = """[#%&{}\\<>*/$'":@+]""".toRegex()
+            return fileName.replace(invalidCharsRegex, "_")
         }
 
 

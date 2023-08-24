@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SmallText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="NormalText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <!-- Very Small txt -->
+    <style name="SmallItalicText">
+        <item name="android:textSize">7sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/lightGrey</item>
+    </style>
+
+    <!-- Slide Switch -->
+    <style name="SlideSwitch">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:thumbTint">@color/switchOnColor</item>
+        <item name="android:trackTint">@color/switchOffColor</item>
+
+    </style>
+    <!-- Change folder Image Button -->
+    <style name="ChangeFoldImButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:src">@drawable/round_sync_24</item>
+        <item name="android:tint">@color/clickaday_background_color</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!-- Divider -->
+    <style name="Divider">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerColor</item>
+    </style>
+
+
+
+
+
+
+
+
+
+</resources>

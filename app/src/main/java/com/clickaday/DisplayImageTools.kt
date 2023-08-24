@@ -31,7 +31,7 @@ class DisplayImageTools {
                     namePicture = lastFile?.name!!
                     i += 1
                 }
-                return if (i == listSize)
+                return if (i == listSize && namePicture.contains(".trashed"))
                     null
                 else
                     lastFile
@@ -93,11 +93,11 @@ class DisplayImageTools {
             val pictureViewSat = act.findViewById<ImageView>(R.id.history_pictures_view_sat)
             val pictureViewSun = act.findViewById<ImageView>(R.id.history_pictures_view_sun)
 
-            val listsize = MainActivity.dir_pic.listFiles()!!.size
+            val listsize = MainActivity.IMAGE_DIR.listFiles()!!.size
 
             for (i in 0 until listsize) {
-                val currentFile = MainActivity.dir_pic.listFiles()
-                    ?.get(MainActivity.dir_pic.listFiles()?.size?.minus(i + 1)!!)
+                val currentFile = MainActivity.IMAGE_DIR.listFiles()
+                    ?.get(MainActivity.IMAGE_DIR.listFiles()?.size?.minus(i + 1)!!)
                 val namePicture = currentFile?.name!!
 
                 if (!namePicture.contains(".trashed")) {
@@ -133,7 +133,7 @@ class DisplayImageTools {
          * Correct the orientation of a picture (based on the stored picture)
          * @author Mathieu Castera
          */
-        fun correctOrientation(currentFile: File): Bitmap? {
+        private fun correctOrientation(currentFile: File): Bitmap? {
             val bitmap = BitmapFactory.decodeFile(currentFile.path)
 
 // Récupérer l'orientation de l'image à l'aide de ExifInterface
@@ -174,5 +174,4 @@ class DisplayImageTools {
                 //pictureView.setImageBitmap()
             }
         }
-    }
-}
+    }}

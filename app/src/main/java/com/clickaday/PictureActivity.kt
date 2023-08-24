@@ -51,12 +51,18 @@ class PictureActivity : AppCompatActivity() {
 
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener {
+
+            if (!MainActivity.IMAGE_DIR_TMP.exists()) {
+                // Créer le dossier s'il n'existe pas
+                MainActivity.IMAGE_DIR_TMP.mkdirs()
+            }
+
             setDataPicture()
             CamTools.takePhoto(this, imageCapture!!, outputOptions) { isSaved ->
                 if (isSaved) {
                     goToVerifActivity()
                 } else {
-                    Toast.makeText(this, "Image didn't save", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Image not saved", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -82,7 +88,7 @@ class PictureActivity : AppCompatActivity() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, pictureName)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/${PICTURE_TYPE}")
-            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${MainActivity.PICTURES_FOLDER}")
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${MainActivity.NAME_PICTURES_FOLDER_TMP}")
         }
         // Create output options object which contains file + metadata
         outputOptions = ImageCapture.OutputFileOptions.Builder(

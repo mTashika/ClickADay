@@ -12,6 +12,15 @@
     <!--Cell Table-->
         <!--Cell disposition-->
         <dimen name="cell_disp_height">31sp</dimen>
+    <!--Text View-->
+    <dimen name="cell_txt_margin_left">29dp</dimen>
+    <dimen name="cell_txt_margin_right">14dp</dimen>
+    <dimen name="cell_txt_margin_top">8dp</dimen>
+    <!--Image View-->
+    <dimen name="cell_img_margin_left">1dp</dimen>
+    <dimen name="cell_img_margin_right">14dp</dimen>
+    <dimen name="cell_img_margin_top">7dp</dimen>
+
         <!--Cell dimensions-->
         <dimen name="cell_height">85dp</dimen>
         <dimen name="cell_width">61dp</dimen>

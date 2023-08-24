@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_constraint_item_menu_parameter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/layout_ref_item_menu_parameter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_border"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp">
+
+        <!-- Select password -->
+        <LinearLayout
+            android:id="@+id/layout_password_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintTop_toTopOf="@id/layout_ref_item_menu_parameter">
+
+            <TextView
+                android:id="@+id/text_view_password"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <Switch
+                android:id="@+id/switch_button_password"
+                style="@style/SlideSwitch"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/divider1"
+            style="@style/Divider"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintTop_toBottomOf="@id/layout_password_selection" />
+
+        <!-- Folder Selection -->
+        <LinearLayout
+            android:id="@+id/layout_folder_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintTop_toBottomOf="@id/divider1">
+
+            <EditText
+                android:id="@+id/edit_txt_item_menu_changer"
+                style="@style/SmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="none"
+                android:enabled="false"
+                android:inputType="text"
+                android:labelFor="@id/image_button"
+                android:text="default folder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+            <ImageButton
+                android:id="@+id/image_button"
+                style="@style/ChangeFoldImButton"
+                android:layout_gravity="center"
+                android:contentDescription="change folder to save the picture"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/edit_txt_item_menu_changer"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <View
+
+            android:id="@+id/divider2"
+            style="@style/Divider"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/layout_folder_selection" />
+
+
+        <!-- Very small text -->
+        <TextView
+            android:id="@+id/italic_txt_version"
+            style="@style/SmallItalicText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Texte très petit et en italique"
+            app:layout_constraintBottom_toBottomOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
