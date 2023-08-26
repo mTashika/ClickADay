@@ -16,7 +16,7 @@ import java.io.File
 import com.clickaday.DisplayImageTools as ImageTools
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),Interfaces.EnableButtonListener {
     companion object {
         //static objects (can be use without create an instantiation of this class)
         private const val PICTURES_FOLDER = "Daily"
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var photoButton: Button
     private var permissionsResult: Boolean = false
-
 
     /**
      * OnCreate function - MainActivity
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.settings_item -> {
-                Toast.makeText(this, "CLISK", Toast.LENGTH_SHORT).show()
+                photoButton.isEnabled = false
                 val parameterFrag:Fragment = ParameterFragmentMenu()
                 USRTools.launchFragment(parameterFrag,R.id.frame_layout_main_act, ParameterFragmentMenu.TAG_FRAG ,supportFragmentManager)
 
@@ -109,6 +108,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun enablePhotoBtn() {
+        photoButton.isEnabled = true
     }
 
     /**

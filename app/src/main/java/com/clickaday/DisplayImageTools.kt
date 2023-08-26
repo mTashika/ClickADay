@@ -2,6 +2,7 @@ package com.clickaday
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.clickaday.R.string.picture_taken_hours_add
+import jp.wasabeef.blurry.Blurry
 import java.io.File
 import java.time.LocalDateTime
 
@@ -174,4 +176,11 @@ class DisplayImageTools {
                 //pictureView.setImageBitmap()
             }
         }
-    }}
+        fun setBlurImg(ctx: Context, image: Bitmap, imgView:ImageView,radius: Int) {
+            return Blurry.with(ctx)
+                .radius(radius) // Adjust the blur radius as needed
+                .from(image)
+                .into(imgView)
+        }
+    }
+}

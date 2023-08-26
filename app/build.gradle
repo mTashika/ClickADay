@@ -59,8 +59,9 @@ dependencies {
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
 
-    //CardView dependencies
-    implementation "androidx.cardview:cardview:1.0.0"
+    //Blurred image
+    implementation 'com.eightbitlab:blurview:1.6.6'
+    implementation 'jp.wasabeef:blurry:4.0.0'
 
 
 }

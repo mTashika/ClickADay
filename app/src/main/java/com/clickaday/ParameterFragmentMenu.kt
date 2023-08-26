@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -14,10 +15,26 @@ import androidx.fragment.app.Fragment
 
 
 class ParameterFragmentMenu : Fragment() {
+
     private lateinit var passwordSwitch: Switch
     private lateinit var folderEditText: EditText
     private lateinit var folderImageButton: ImageButton
     private lateinit var smallItalicText: TextView
+    private lateinit var backgroundView: View
+
+    private var enableButtonListener: Interfaces.EnableButtonListener? = null
+
+    override fun onAttach(context: Context) {//called when the fragment is attached to an activity
+        super.onAttach(context)
+        enableButtonListener = context as? Interfaces.EnableButtonListener
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        enableButtonListener?.enablePhotoBtn()
+        enableButtonListener = null
+    }
+
 
     companion object {
         const val TAG_FRAG = "TAG_PARAMETER_FRAGMENT"
@@ -39,6 +56,7 @@ class ParameterFragmentMenu : Fragment() {
         folderEditText = v.findViewById(R.id.edit_txt_item_menu_changer)
         folderImageButton = v.findViewById(R.id.image_button)
         smallItalicText = v.findViewById(R.id.italic_txt_version)
+        backgroundView=v.findViewById(R.id.img_background_menu_param)
 
         passwordSwitch.setOnClickListener {
             Toast.makeText(ctx, "CLICK switch", Toast.LENGTH_SHORT).show()
@@ -49,11 +67,11 @@ class ParameterFragmentMenu : Fragment() {
 
         }
 
-        v.setOnClickListener {
-            Toast.makeText(requireContext(), "CLICK view", Toast.LENGTH_SHORT).show()
+        backgroundView.setOnClickListener {
             USRTools.closeFragmentWithTag(TAG_FRAG, requireActivity().supportFragmentManager)
+            enableButtonListener?.enablePhotoBtn()
         }
-        //ADD click listener for all the other components (to avoir closing if we click the txt)
     }
+
 
 }
