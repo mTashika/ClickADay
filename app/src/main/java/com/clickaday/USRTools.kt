@@ -1,6 +1,7 @@
 package com.clickaday
 
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -27,6 +28,14 @@ class USRTools {
             fragmentTransaction.commit()
         }
 
+        fun buildPasswordFragment(value: Boolean): Fragment {
+            val fragment = PasswordFragment()
+            val args = Bundle()
+            args.putBoolean(PasswordFragment.TAG_BOOL, value)
+            fragment.arguments = args
+            return fragment
+        }
+
         /**
          * Close a fragment with his tag
          */
@@ -41,6 +50,17 @@ class USRTools {
                 transaction.commit()
             }
         }
+
+        fun launchPasswordCheckFrag(supportFragManager: FragmentManager) {
+            val fragment = buildPasswordFragment(false)
+            launchFragment(
+                fragment,
+                R.id.frame_layout_main_act2,
+                PasswordFragment.TAG_FRAG,
+                supportFragManager
+            )
+        }
+
 
         /**
          * Get the day of the week with year, month and day value
@@ -148,6 +168,10 @@ class USRTools {
             return fileName.replace(invalidCharsRegex, "_")
         }
 
+        fun isValidDirectoryName(input: String): Boolean {
+            val pattern = Regex("^[a-zA-Z0-9_-]*\$")
+            return pattern.matches(input)
+        }
 
     }
 

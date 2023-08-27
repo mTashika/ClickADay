@@ -52,9 +52,9 @@ class PictureActivity : AppCompatActivity() {
         // Set up the listeners for take photo and video capture buttons
         viewBinding.imageCaptureButton.setOnClickListener {
 
-            if (!MainActivity.IMAGE_DIR_TMP.exists()) {
+            if (!MainActivity.FOLDER_PICTURE_TMP.exists()) {
                 // Créer le dossier s'il n'existe pas
-                MainActivity.IMAGE_DIR_TMP.mkdirs()
+                MainActivity.FOLDER_PICTURE_TMP.mkdirs()
             }
 
             setDataPicture()
@@ -88,7 +88,7 @@ class PictureActivity : AppCompatActivity() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, pictureName)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/${PICTURE_TYPE}")
-            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${MainActivity.NAME_PICTURES_FOLDER_TMP}")
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/${MainActivity.FOLDER_NAME_TMP_PICTURE}")
         }
         // Create output options object which contains file + metadata
         outputOptions = ImageCapture.OutputFileOptions.Builder(

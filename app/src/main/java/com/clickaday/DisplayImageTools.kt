@@ -95,11 +95,11 @@ class DisplayImageTools {
             val pictureViewSat = act.findViewById<ImageView>(R.id.history_pictures_view_sat)
             val pictureViewSun = act.findViewById<ImageView>(R.id.history_pictures_view_sun)
 
-            val listsize = MainActivity.IMAGE_DIR.listFiles()!!.size
+            val listsize = MainActivity.FOLDER_PICTURE.listFiles()!!.size
 
             for (i in 0 until listsize) {
-                val currentFile = MainActivity.IMAGE_DIR.listFiles()
-                    ?.get(MainActivity.IMAGE_DIR.listFiles()?.size?.minus(i + 1)!!)
+                val currentFile = MainActivity.FOLDER_PICTURE.listFiles()
+                    ?.get(MainActivity.FOLDER_PICTURE.listFiles()?.size?.minus(i + 1)!!)
                 val namePicture = currentFile?.name!!
 
                 if (!namePicture.contains(".trashed")) {
@@ -129,6 +129,28 @@ class DisplayImageTools {
                     }
                 }
             }
+        }
+
+        fun setEmptyImgMainAct(act: Activity) {
+            val pictureView = act.findViewById<ImageView>(R.id.picture_view)
+            val pictureViewMon = act.findViewById<ImageView>(R.id.history_pictures_view_mon)
+            val pictureViewTue = act.findViewById<ImageView>(R.id.history_pictures_view_tue)
+            val pictureViewWed = act.findViewById<ImageView>(R.id.history_pictures_view_wed)
+            val pictureViewThu = act.findViewById<ImageView>(R.id.history_pictures_view_thu)
+            val pictureViewFri = act.findViewById<ImageView>(R.id.history_pictures_view_fri)
+            val pictureViewSat = act.findViewById<ImageView>(R.id.history_pictures_view_sat)
+            val pictureViewSun = act.findViewById<ImageView>(R.id.history_pictures_view_sun)
+
+            pictureView.setImageResource(0)
+            pictureViewMon.setImageResource(0)
+            pictureViewTue.setImageResource(0)
+            pictureViewWed.setImageResource(0)
+            pictureViewThu.setImageResource(0)
+            pictureViewFri.setImageResource(0)
+            pictureViewSat.setImageResource(0)
+            pictureViewSun.setImageResource(0)
+
+
         }
 
         /**
@@ -176,7 +198,8 @@ class DisplayImageTools {
                 //pictureView.setImageBitmap()
             }
         }
-        fun setBlurImg(ctx: Context, image: Bitmap, imgView:ImageView,radius: Int) {
+
+        fun setBlurImg(ctx: Context, image: Bitmap, imgView: ImageView, radius: Int) {
             return Blurry.with(ctx)
                 .radius(radius) // Adjust the blur radius as needed
                 .from(image)

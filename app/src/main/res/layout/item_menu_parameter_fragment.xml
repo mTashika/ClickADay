@@ -72,7 +72,7 @@
             app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
             app:layout_constraintTop_toBottomOf="@id/divider1">
 
-            <EditText
+            <TextView
                 android:id="@+id/edit_txt_item_menu_changer"
                 style="@style/SmallText"
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
 
         <!-- Blow picture -->
         <LinearLayout
-            android:id="@+id/layout_blow_pic_selection"
+            android:id="@+id/layout_blur_pic_selection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
@@ -126,7 +126,46 @@
 
 
             <Switch
-                android:id="@+id/switch_button_blow_pic"
+                android:id="@+id/switch_button_blur_pic"
+                style="@style/SlideSwitch"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <View
+
+            android:id="@+id/divider3"
+            style="@style/Divider"
+            android:layout_width="match_parent"
+            app:layout_constraintEnd_toEndOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="@id/divider1"
+            app:layout_constraintTop_toBottomOf="@id/layout_blur_pic_selection" />
+
+        <!-- Blow picture -->
+        <LinearLayout
+            android:id="@+id/layout_description_pic_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
+            app:layout_constraintTop_toTopOf="@id/layout_ref_item_menu_parameter">
+
+            <TextView
+                android:id="@+id/text_view_description_pic"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="descr picture"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+
+
+            <Switch
+                android:id="@+id/switch_button_description_pic"
                 style="@style/SlideSwitch"
                 android:checked="true"
                 app:layout_constraintBottom_toBottomOf="parent"

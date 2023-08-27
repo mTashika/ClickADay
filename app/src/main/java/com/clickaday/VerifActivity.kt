@@ -25,7 +25,7 @@ class VerifActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val pictureView = findViewById<ImageView>(R.id.picture_view_verif)
 
-        ImageTools.displayImage(pictureView, ImageTools.getLastPicture(MainActivity.IMAGE_DIR_TMP))
+        ImageTools.displayImage(pictureView, ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE_TMP))
 
         //------ Listener ------
         savePictureListener()
@@ -51,7 +51,7 @@ class VerifActivity : AppCompatActivity() {
     private fun deleteTmpFolder() {
         val folderToDelete = File(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-            MainActivity.NAME_PICTURES_FOLDER_TMP
+            MainActivity.FOLDER_NAME_TMP_PICTURE
         )
         folderToDelete.deleteRecursively()
     }
@@ -87,20 +87,20 @@ class VerifActivity : AppCompatActivity() {
                 val newName =
                     "${PictureActivity.NAME_CURRENT_PICTURE}_${text}" // Replace with the new name you want to give to the picture file
                 val oldFile =
-                    File(MainActivity.IMAGE_DIR_TMP, "${oldName}${PictureActivity.PICTURE_EXTENTION}")
+                    File(MainActivity.FOLDER_PICTURE_TMP, "${oldName}${PictureActivity.PICTURE_EXTENTION}")
 
 
-                if (oldFile.exists() && MainActivity.IMAGE_DIR.exists()) {
+                if (oldFile.exists() && MainActivity.FOLDER_PICTURE.exists()) {
                     if (saveFinalPicture(
-                            MainActivity.IMAGE_DIR_TMP,
-                            MainActivity.IMAGE_DIR,
+                            MainActivity.FOLDER_PICTURE_TMP,
+                            MainActivity.FOLDER_PICTURE,
                             "${oldName}${PictureActivity.PICTURE_EXTENTION}",
                             "${newName}${PictureActivity.PICTURE_EXTENTION}"
                         )
                     ) {
                         PictureActivity.NAME_CURRENT_PICTURE = newName
                         deleteTmpFolder()
-                        val lastfile = ImageTools.getLastPicture(MainActivity.IMAGE_DIR)
+                        val lastfile = ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE)
                         if (lastfile!!.name.toString() =="${newName}${PictureActivity.PICTURE_EXTENTION}"){
                         val msg = getString(R.string.picture_save_with_description)
                         Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()}

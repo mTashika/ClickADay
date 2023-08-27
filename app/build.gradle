@@ -63,5 +63,8 @@ dependencies {
     implementation 'com.eightbitlab:blurview:1.6.6'
     implementation 'jp.wasabeef:blurry:4.0.0'
 
+    //Crypto
+    implementation "androidx.security:security-crypto:1.1.0-alpha02"
+
 
 }
