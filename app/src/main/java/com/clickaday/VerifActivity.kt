@@ -25,7 +25,7 @@ class VerifActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val pictureView = findViewById<ImageView>(R.id.picture_view_verif)
 
-        ImageTools.displayImage(pictureView, ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE_TMP))
+        ImageTools.displayImage(pictureView, ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE_TMP),this)
 
         //------ Listener ------
         savePictureListener()

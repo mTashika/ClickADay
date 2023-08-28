@@ -7,15 +7,15 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
+import android.renderscript.*
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.clickaday.R.string.picture_taken_hours_add
-import jp.wasabeef.blurry.Blurry
 import java.io.File
 import java.time.LocalDateTime
-
 import com.clickaday.USRTools as Tools
+
 
 class DisplayImageTools {
     companion object {
@@ -57,7 +57,7 @@ class DisplayImageTools {
             }
             val tabDate = Tools.getDateNamedPicture(lastFile.name)
             if (Tools.isDoneToday(tabDate)) {
-                displayImage(pictureView, lastFile)
+                displayImage(pictureView, lastFile, act)
                 val formattedHour = String.format("%02dH %02dmin", tabDate[3], tabDate[4])
                 titlePicture.text = act.getString(picture_taken_hours_add) + formattedHour
 
@@ -110,13 +110,13 @@ class DisplayImageTools {
                             verifImage[numToday - 1] = true
                             val bitmap = correctOrientation(currentFile)
                             when (numToday) {
-                                1 -> pictureViewMon.setImageBitmap(bitmap)
-                                2 -> pictureViewTue.setImageBitmap(bitmap)
-                                3 -> pictureViewWed.setImageBitmap(bitmap)
-                                4 -> pictureViewThu.setImageBitmap(bitmap)
-                                5 -> pictureViewFri.setImageBitmap(bitmap)
-                                6 -> pictureViewSat.setImageBitmap(bitmap)
-                                7 -> pictureViewSun.setImageBitmap(bitmap)
+                                1 -> displayBitmap(pictureViewMon, bitmap, act)
+                                2 -> displayBitmap(pictureViewTue, bitmap, act)
+                                3 -> displayBitmap(pictureViewWed, bitmap, act)
+                                4 -> displayBitmap(pictureViewThu, bitmap, act)
+                                5 -> displayBitmap(pictureViewFri, bitmap, act)
+                                6 -> displayBitmap(pictureViewSat, bitmap, act)
+                                7 -> displayBitmap(pictureViewSun, bitmap, act)
                                 else -> Toast.makeText(
                                     act,
                                     "Error while updating the historic table",
@@ -150,7 +150,6 @@ class DisplayImageTools {
             pictureViewSat.setImageResource(0)
             pictureViewSun.setImageResource(0)
 
-
         }
 
         /**
@@ -160,7 +159,7 @@ class DisplayImageTools {
         private fun correctOrientation(currentFile: File): Bitmap? {
             val bitmap = BitmapFactory.decodeFile(currentFile.path)
 
-// Récupérer l'orientation de l'image à l'aide de ExifInterface
+            // Récupérer l'orientation de l'image à l'aide de ExifInterface
             val exif = ExifInterface(currentFile.path)
             val orientation =
                 exif.getAttributeInt(
@@ -168,7 +167,7 @@ class DisplayImageTools {
                     ExifInterface.ORIENTATION_UNDEFINED
                 )
 
-// Corriger l'orientation de l'image si nécessaire
+            // Corriger l'orientation de l'image si nécessaire
             val rotatedBitmap = when (orientation) {
                 ExifInterface.ORIENTATION_ROTATE_90 -> rotateBitmap(bitmap, 90F)
                 ExifInterface.ORIENTATION_ROTATE_180 -> rotateBitmap(bitmap, 180F)
@@ -188,22 +187,25 @@ class DisplayImageTools {
             return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
 
-        fun displayImage(pictureView: ImageView, picture: File?) {
-            if (picture != null) {
-                if (picture.exists()) {
-                    val bitmap = correctOrientation(picture)
-                    pictureView.setImageBitmap(bitmap)
-                }
-            } else {
-                //pictureView.setImageBitmap()
+        fun displayImage(pictureView: ImageView, picture: File?, ctx: Context) {
+            if (picture!!.exists()) {
+                val bitmap = correctOrientation(picture)
+                displayBitmap(pictureView, bitmap, ctx)
             }
         }
 
-        fun setBlurImg(ctx: Context, image: Bitmap, imgView: ImageView, radius: Int) {
-            return Blurry.with(ctx)
-                .radius(radius) // Adjust the blur radius as needed
-                .from(image)
-                .into(imgView)
+        private fun displayBitmap(pictureView: ImageView, img: Bitmap?, ctx: Context) {
+            if (PreferencesTools.getPrefBool(ctx, PreferencesTools.PREF_BLUR_IMG)) {
+                pictureView.setImageBitmap(applyBlur(img!!))
+            } else {
+                pictureView.setImageBitmap(img)
+            }
+
+        }
+
+        private fun applyBlur(bitmap: Bitmap): Bitmap {
+            val newbitmap = Bitmap.createScaledBitmap(bitmap, bitmap.width/175, bitmap.height/175, true)
+            return Bitmap.createScaledBitmap(newbitmap, bitmap.width, bitmap.height, true)
         }
     }
 }

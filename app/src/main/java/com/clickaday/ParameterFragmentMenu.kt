@@ -159,6 +159,7 @@ class ParameterFragmentMenu : Fragment() {
                             "blurswitch password ok",
                             Toast.LENGTH_SHORT
                         ).show()
+                        returnToMainActivityListener?.launchDisplayImg()
                     },
                     actionIfIncorrect = {
                         blurSwitch.isChecked = PreferencesTools.getPrefBool(
@@ -184,6 +185,7 @@ class ParameterFragmentMenu : Fragment() {
                     "blurswitch pref switch",
                     Toast.LENGTH_SHORT
                 ).show()
+                returnToMainActivityListener?.launchDisplayImg()
             }
         }
 
