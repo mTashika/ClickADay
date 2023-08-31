@@ -6,17 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 
 
 class ParameterFragmentMenu : Fragment() {
 
-    private lateinit var passwordSwitch: Switch
-    private lateinit var blurSwitch: Switch
-    private lateinit var descriptionSwitch: Switch
+    private lateinit var passwordSwitch: SwitchCompat
+    private lateinit var blurSwitch: SwitchCompat
+    private lateinit var descriptionSwitch: SwitchCompat
     private lateinit var folderTxtView: TextView
     private lateinit var folderImageButton: ImageButton
     private lateinit var smallItalicText: TextView
@@ -82,15 +82,18 @@ class ParameterFragmentMenu : Fragment() {
             val curPasswordPref =
                 PreferencesTools.getPrefBool(requireContext(), PreferencesTools.PREF_PASSWORD)
 
-            var fragment: Fragment? = null
+            val fragment: Fragment?
             //if is to SAVE
             if (passwordSwitch.isChecked && !curPasswordPref) {
 
                 requireActivity().supportFragmentManager.setFragmentResultListener(
                     PasswordFragment.RESULT_KEY,
                     viewLifecycleOwner
-                ) { _, result ->
-                        passwordSwitch.isChecked = PreferencesTools.getPrefBool(requireContext(),PreferencesTools.PREF_PASSWORD)
+                ) { _, _ ->
+                    passwordSwitch.isChecked = PreferencesTools.getPrefBool(
+                        requireContext(),
+                        PreferencesTools.PREF_PASSWORD
+                    )
 
                 }
                 //launch the fragment
@@ -122,7 +125,10 @@ class ParameterFragmentMenu : Fragment() {
                             "Password successfully removed",
                             Toast.LENGTH_SHORT
                         ).show()
-                        passwordSwitch.isChecked = PreferencesTools.getPrefBool(requireContext(),PreferencesTools.PREF_PASSWORD)
+                        passwordSwitch.isChecked = PreferencesTools.getPrefBool(
+                            requireContext(),
+                            PreferencesTools.PREF_PASSWORD
+                        )
 
                     },
                     actionIfIncorrect = {
@@ -131,7 +137,10 @@ class ParameterFragmentMenu : Fragment() {
                             "Password not removed",
                             Toast.LENGTH_SHORT
                         ).show()
-                        passwordSwitch.isChecked = PreferencesTools.getPrefBool(requireContext(),PreferencesTools.PREF_PASSWORD)
+                        passwordSwitch.isChecked = PreferencesTools.getPrefBool(
+                            requireContext(),
+                            PreferencesTools.PREF_PASSWORD
+                        )
 
                     }
                 )
@@ -154,11 +163,6 @@ class ParameterFragmentMenu : Fragment() {
                             PreferencesTools.PREF_BLUR_IMG
 
                         )
-                        Toast.makeText(
-                            requireContext(),
-                            "blurswitch password ok",
-                            Toast.LENGTH_SHORT
-                        ).show()
                         returnToMainActivityListener?.launchDisplayImg()
                     },
                     actionIfIncorrect = {
@@ -166,11 +170,7 @@ class ParameterFragmentMenu : Fragment() {
                             requireContext(),
                             PreferencesTools.PREF_BLUR_IMG
                         )
-                        Toast.makeText(
-                            requireContext(),
-                            "blurswitch password no",
-                            Toast.LENGTH_SHORT
-                        ).show()
+
                     }
                 )
 
@@ -180,11 +180,6 @@ class ParameterFragmentMenu : Fragment() {
                     blurSwitch.isChecked,
                     PreferencesTools.PREF_BLUR_IMG
                 )
-                Toast.makeText(
-                    requireContext(),
-                    "blurswitch pref switch",
-                    Toast.LENGTH_SHORT
-                ).show()
                 returnToMainActivityListener?.launchDisplayImg()
             }
         }
@@ -205,22 +200,13 @@ class ParameterFragmentMenu : Fragment() {
                             descriptionSwitch.isChecked,
                             PreferencesTools.PREF_DESCRIPTION_IMG
                         )
-                        Toast.makeText(
-                            requireContext(),
-                            "descrswitch password ok",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        returnToMainActivityListener?.launchDayImg()
                     },
                     actionIfIncorrect = {
                         descriptionSwitch.isChecked = PreferencesTools.getPrefBool(
                             requireContext(),
                             PreferencesTools.PREF_DESCRIPTION_IMG
                         )
-                        Toast.makeText(
-                            requireContext(),
-                            "descrswitch password no",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 )
             } else {//there is no password
@@ -230,11 +216,8 @@ class ParameterFragmentMenu : Fragment() {
                     descriptionSwitch.isChecked,
                     PreferencesTools.PREF_DESCRIPTION_IMG
                 )
-                Toast.makeText(
-                    requireContext(),
-                    "descrswitch switch",
-                    Toast.LENGTH_SHORT
-                ).show()
+                returnToMainActivityListener?.launchDayImg()
+
             }
         }
 

@@ -7,11 +7,11 @@
     android:orientation="horizontal">
 
 
-        <View
-            android:id="@+id/img_background_menu_param"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#88000000"/>
+    <View
+        android:id="@+id/img_background_menu_param"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88000000" />
 
     <LinearLayout
         android:id="@+id/layout_ref_item_menu_parameter"
@@ -45,7 +45,7 @@
                 />
 
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_button_password"
                 style="@style/SlideSwitch"
                 android:checked="true"
@@ -125,7 +125,7 @@
                 />
 
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_button_blur_pic"
                 style="@style/SlideSwitch"
                 android:checked="true"
@@ -164,7 +164,7 @@
                 />
 
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_button_description_pic"
                 style="@style/SlideSwitch"
                 android:checked="true"

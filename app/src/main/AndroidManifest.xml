@@ -30,6 +30,7 @@
         </activity>
         <activity android:name=".PictureActivity"/>
         <activity android:name=".VerifActivity"/>
+        <activity android:name=".BigPictureActivity"/>
     </application>
 
 </manifest>

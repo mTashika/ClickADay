@@ -7,7 +7,7 @@ import androidx.security.crypto.MasterKey
 class PreferencesTools {
     companion object {
         private const val PREF_NAME = "MyPrefs"
-        const val PREF_NAME_CRYPT = "MyCryptPrefs"
+        private const val PREF_NAME_CRYPT = "MyCryptPrefs"
         const val PREF_PERMISSIONS = "permissionsResult"
         const val PREF_BLUR_IMG = "isBlurEnable"
         const val PREF_PASSWORD_VALUE_CRYPT = "isPasswordEnable"

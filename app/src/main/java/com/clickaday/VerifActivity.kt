@@ -7,10 +7,12 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.view.MenuItem
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.io.File
-
 import com.clickaday.DisplayImageTools as ImageTools
 
 class VerifActivity : AppCompatActivity() {
@@ -25,7 +27,11 @@ class VerifActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val pictureView = findViewById<ImageView>(R.id.picture_view_verif)
 
-        ImageTools.displayImage(pictureView, ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE_TMP),this)
+        ImageTools.displayImage(
+            pictureView,
+            ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE_TMP),
+            PreferencesTools.getPrefBool(this, PreferencesTools.PREF_BLUR_IMG)
+        )
 
         //------ Listener ------
         savePictureListener()
@@ -87,7 +93,10 @@ class VerifActivity : AppCompatActivity() {
                 val newName =
                     "${PictureActivity.NAME_CURRENT_PICTURE}_${text}" // Replace with the new name you want to give to the picture file
                 val oldFile =
-                    File(MainActivity.FOLDER_PICTURE_TMP, "${oldName}${PictureActivity.PICTURE_EXTENTION}")
+                    File(
+                        MainActivity.FOLDER_PICTURE_TMP,
+                        "${oldName}${PictureActivity.PICTURE_EXTENTION}"
+                    )
 
 
                 if (oldFile.exists() && MainActivity.FOLDER_PICTURE.exists()) {
@@ -101,10 +110,10 @@ class VerifActivity : AppCompatActivity() {
                         PictureActivity.NAME_CURRENT_PICTURE = newName
                         deleteTmpFolder()
                         val lastfile = ImageTools.getLastPicture(MainActivity.FOLDER_PICTURE)
-                        if (lastfile!!.name.toString() =="${newName}${PictureActivity.PICTURE_EXTENTION}"){
-                        val msg = getString(R.string.picture_save_with_description)
-                        Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()}
-                        else{
+                        if (lastfile!!.name.toString() == "${newName}${PictureActivity.PICTURE_EXTENTION}") {
+                            val msg = getString(R.string.picture_save_with_description)
+                            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                        } else {
                             val msg = "Wrong File Name"
                             Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
 

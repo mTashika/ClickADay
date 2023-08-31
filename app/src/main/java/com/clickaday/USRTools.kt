@@ -18,12 +18,12 @@ class USRTools {
          */
         fun launchFragment(
             fragment: Fragment,
-            id_layout: Int,
-            tag_frag: String,
+            idLayout: Int,
+            tagFrag: String,
             fragmentManager: FragmentManager
         ) {
             val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(id_layout, fragment, tag_frag)
+            fragmentTransaction.replace(idLayout, fragment, tagFrag)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }
@@ -93,8 +93,8 @@ class USRTools {
             val hours: Int
             val minutes: Int
             try {
-                hours = duration.toHoursPart()
-                minutes = duration.toMinutesPart()
+                hours = duration.toHours().toInt()
+                minutes = (duration.toMinutes() % 60).toInt()
             } catch (e: Exception) {
                 return "Impossible de calculer l'heure et les minutes d'écarts"
 
@@ -171,6 +171,19 @@ class USRTools {
         fun isValidDirectoryName(input: String): Boolean {
             val pattern = Regex("^[a-zA-Z0-9_-]*\$")
             return pattern.matches(input)
+        }
+
+        fun getPictureDescription(txt: String): String {
+            if (txt.length <=
+                PictureActivity.FILENAME_FORMAT.length + PictureActivity.PICTURE_FIRST_CHARACTERE.length + 1
+            ) {
+                return ""
+            }
+            val newTxt = txt.substring(
+                PictureActivity.FILENAME_FORMAT.length + PictureActivity.PICTURE_FIRST_CHARACTERE.length + 1
+            )
+            return newTxt.replace("_", " ")
+                .replaceFirstChar { it.uppercase() }
         }
 
     }

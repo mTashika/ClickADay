@@ -54,6 +54,11 @@ class ChangeFolderFragment : Fragment() {
 
         okButton.setOnClickListener {
             val newFolderName = editText.text.toString()
+            if(newFolderName.length< MIN_FOLDER_NAME_LENGTH || newFolderName.length > MAX_FOLDER_NAME_LENGTH){
+                Toast.makeText(requireContext(), "Invalid folder length", Toast.LENGTH_SHORT)
+                    .show()
+                returnVal(false)
+            }
             if (USRTools.isValidDirectoryName(newFolderName)) {
                 PreferencesTools.savePrefStr(
                     requireContext(),

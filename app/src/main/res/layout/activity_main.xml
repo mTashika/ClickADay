@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/layout_toolbar"
-        layout="@layout/tool_bar"/>
+        layout="@layout/tool_bar" />
 
     <LinearLayout
         android:id="@+id/layout_day_pic"
@@ -18,7 +18,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_toolbar">
@@ -31,7 +33,7 @@
 
         <TextView
             android:id="@+id/picture_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Votre texte ici"
@@ -39,16 +41,27 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textview_time_day_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:text="Votre text ici"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_day_pic" />
+
 
     <!-- HISTORY TABLE -->
     <LinearLayout
         android:id="@+id/layout_hist_table"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_day_pic"
-        android:orientation="vertical">
+        app:layout_constraintTop_toBottomOf="@id/textview_time_day_pic">
 
         <LinearLayout
             android:id="@+id/layout_hist_txt_view"
@@ -150,7 +163,7 @@
                 android:layout_height="@dimen/cell_height"
                 android:layout_marginLeft="@dimen/cell_img_margin_left"
                 android:layout_marginTop="@dimen/cell_img_margin_top"
-                android:contentDescription="nothing"/>
+                android:contentDescription="nothing" />
 
             <!-- Wednesday -->
             <ImageView
@@ -204,35 +217,58 @@
         android:id="@+id/history_table_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/history_table"
         android:contentDescription="nothing"
-        app:layout_constraintTop_toTopOf="@id/layout_hist_table"
+        android:src="@drawable/history_table"
+        app:layout_constraintEnd_toEndOf="@id/layout_hist_table"
         app:layout_constraintStart_toStartOf="@id/layout_hist_table"
-        app:layout_constraintEnd_toEndOf="@id/layout_hist_table"/>
+        app:layout_constraintTop_toTopOf="@id/layout_hist_table" />
 
-    <Button
-        android:id="@+id/PictureActivityButton"
-        android:layout_width="110dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/go_to_activity_photo"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toBottomOf="@id/layout_hist_table"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/layout_hist_table">
+
+        <ImageButton
+            android:id="@+id/gallery_image_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="28dp"
+            android:backgroundTint="@color/clickaday_background_color"
+            android:src="@drawable/baseline_photo_library_24" />
+
+        <Button
+            android:id="@+id/PictureActivityButton"
+            android:layout_width="110dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/go_to_activity_photo" />
+
+    </RelativeLayout>
+
+
     <FrameLayout
         android:id="@+id/frame_layout_main_act"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/layout_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/PictureActivityButton"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
+
     <FrameLayout
         android:id="@+id/frame_layout_main_act2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/layout_toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/PictureActivityButton"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_toolbar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

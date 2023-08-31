@@ -7,12 +7,14 @@ import android.os.Environment
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import java.io.File
+import java.util.Calendar
 import com.clickaday.DisplayImageTools as ImageTools
 
 
@@ -23,17 +25,17 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         lateinit var FOLDER_NAME_TMP_PICTURE: String
         lateinit var FOLDER_PICTURE: File
         lateinit var FOLDER_PICTURE_TMP: File
-        var IS_PASSWORD: Boolean = false
-        var IS_BLUR: Boolean = false
-        var IS_DESCRIPTION: Boolean = false
-
-        private val PERMISSIONS =
-            arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
-
     }
+    private val PERMISSIONS =
+        arrayOf(Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES)
 
     //view
     private lateinit var photoButton: Button
+    private lateinit var galleryBtn: ImageButton
+    private lateinit var dayPictureView : ImageView
+
+    private var tabHistoricView: MutableList<ImageView> =
+        mutableListOf() // contain all the historic view (idex 0 for monday)
 
     //permission
     private var permissionsResult: Boolean = false
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         //View
-        photoButton = findViewById(R.id.PictureActivityButton)
+        initialiseView()
 
         //Preferences
         initializePreferences()
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         permissionsResult = PreferencesTools.getPrefBool(this, PreferencesTools.PREF_PERMISSIONS)
 
         initialiseMainUI()
+
     }
 
     private fun initializePreferences() {
@@ -75,12 +78,12 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
                 supportFragmentManager
             )
         }
-        updateConst()
+        updateFolder()
 
 
     }
 
-    private fun updateConst() {
+    private fun updateFolder() {
         val curFold = PreferencesTools.getPrefStr(this, PreferencesTools.PREF_FOLDER_PICT)
         if (curFold != null) {
             FOLDER_NAME_PICTURE = curFold
@@ -95,14 +98,6 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
             )
         }
 
-        // ------ PASSWORD ------
-        IS_PASSWORD = PreferencesTools.getPrefBool(this, PreferencesTools.PREF_PASSWORD)
-
-        // ------ BLUR ------
-        IS_BLUR = PreferencesTools.getPrefBool(this, PreferencesTools.PREF_BLUR_IMG)
-
-        // ------ DESCRIPTION ------
-        IS_DESCRIPTION = PreferencesTools.getPrefBool(this, PreferencesTools.PREF_DESCRIPTION_IMG)
 
     }
 
@@ -156,6 +151,20 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
 
     }
 
+    private fun initialiseView() {
+        photoButton = findViewById(R.id.PictureActivityButton)
+        galleryBtn = findViewById(R.id.gallery_image_btn)
+        dayPictureView = findViewById(R.id.picture_view)
+
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_mon))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_tue))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_wed))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_thu))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_fri))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_sat))
+        tabHistoricView.add(findViewById(R.id.history_pictures_view_sun))
+    }
+
     private fun initialiseMainUI() {
         photoButton.setOnClickListener {
             if (permissionsResult) {
@@ -165,6 +174,12 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
                     .show()
             }
         }
+        galleryBtn.setOnClickListener {
+            goToBigPictureActivity(-1)
+        }
+
+
+        historicImageViewListener()
 
     }
 
@@ -207,12 +222,17 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         startActivity(intent)
     }
 
+    private fun goToBigPictureActivity(dayInt: Int) {
+        val intent = Intent(this, BigPictureActivity::class.java)
+        intent.putExtra("dayInt", dayInt)
+        startActivity(intent)
+    }
+
     /**
      * Display images on the main activity (big and small ones)
      * @author Mathieu Castera
      */
     private fun displayImages() {
-        val titlePicture = findViewById<TextView>(R.id.picture_title)
 
         if (!FOLDER_PICTURE.exists()) {
             // Créer le dossier s'il n'existe pas
@@ -220,16 +240,40 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         }
 
         if (FOLDER_PICTURE.exists() && FOLDER_PICTURE.listFiles()!!.isNotEmpty()) {
-            ImageTools.displayDayImage(this, titlePicture, FOLDER_PICTURE)
-            ImageTools.displayHistoricImages(this)
+            ImageTools.displayDayImage(this, FOLDER_PICTURE,dayPictureView)
+            ImageTools.displayHistoricImages(this,tabHistoricView)
         }
         //The file is empty
         else {
-            ImageTools.setEmptyImgMainAct(this)
-            titlePicture.text = getString(R.string.picture_moved_empty_folder)
+            ImageTools.setEmptyImgMainAct(dayPictureView ,tabHistoricView)
+
         }
     }
 
+    private fun historicImageViewListener() {
+        tabHistoricView[0].setOnClickListener {
+            goToBigPictureActivity(Calendar.MONDAY)
+        }
+        tabHistoricView[1].setOnClickListener {
+            goToBigPictureActivity(Calendar.TUESDAY)
+        }
+        tabHistoricView[2].setOnClickListener {
+            goToBigPictureActivity(Calendar.WEDNESDAY)
+        }
+        tabHistoricView[3].setOnClickListener {
+            goToBigPictureActivity(Calendar.THURSDAY)
+        }
+        tabHistoricView[4].setOnClickListener {
+            goToBigPictureActivity(Calendar.FRIDAY)
+        }
+        tabHistoricView[5].setOnClickListener {
+            goToBigPictureActivity(Calendar.SATURDAY)
+        }
+        tabHistoricView[6].setOnClickListener {
+            goToBigPictureActivity(Calendar.SUNDAY)
+        }
+
+    }
 
     //Interface
     override fun enablePhotoBtn() {
@@ -237,7 +281,13 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
     }
 
     override fun launchDisplayImg() {
-        updateConst()
+        updateFolder()
         displayImages()
     }
+
+    override fun launchDayImg() {
+        ImageTools.displayDayImage(this, FOLDER_PICTURE,dayPictureView)
+
+    }
+
 }
