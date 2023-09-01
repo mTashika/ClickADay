@@ -6,6 +6,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/clickaday_background"
     tools:context=".MainActivity">
 
     <include
@@ -33,6 +34,7 @@
 
         <TextView
             android:id="@+id/picture_title"
+            style="@style/NormalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -43,6 +45,7 @@
 
     <TextView
         android:id="@+id/textview_time_day_pic"
+        style="@style/SmallText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -77,8 +80,8 @@
                 android:id="@+id/history_table_text_monday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="MON"
 
                 />
@@ -88,8 +91,8 @@
                 android:id="@+id/history_table_text_tuesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="TUE" />
 
             <!-- Wednesday -->
@@ -97,8 +100,8 @@
                 android:id="@+id/history_table_text_wednesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="WED" />
 
             <!-- Thursday -->
@@ -106,8 +109,8 @@
                 android:id="@+id/history_table_text_thursday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="THU" />
 
             <!-- Friday -->
@@ -115,8 +118,8 @@
                 android:id="@+id/history_table_text_friday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="FRI" />
 
             <!-- Saturday -->
@@ -124,8 +127,8 @@
                 android:id="@+id/history_table_text_saturday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="SAT" />
 
             <!-- Sunday -->
@@ -133,8 +136,8 @@
                 android:id="@+id/history_table_text_sunday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/cell_txt_margin_left"
-                android:layout_marginTop="@dimen/cell_txt_margin_top"
+                android:layout_marginLeft="@dimen/hist_tab_txt_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_txt_margin_top"
                 android:text="SUN" />
 
         </LinearLayout>
@@ -150,64 +153,64 @@
             <!-- Monday -->
             <ImageView
                 android:id="@+id/history_pictures_view_mon"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="picture from monday" />
 
             <!-- Tuesday -->
             <ImageView
                 android:id="@+id/history_pictures_view_tue"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
 
             <!-- Wednesday -->
             <ImageView
                 android:id="@+id/history_pictures_view_wed"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
 
             <!-- Thursday -->
             <ImageView
                 android:id="@+id/history_pictures_view_thu"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
 
             <!-- Friday -->
             <ImageView
                 android:id="@+id/history_pictures_view_fri"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
 
             <!-- Saturday -->
             <ImageView
                 android:id="@+id/history_pictures_view_sat"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
 
             <!-- Sunday -->
             <ImageView
                 android:id="@+id/history_pictures_view_sun"
-                android:layout_width="@dimen/text_view_width"
-                android:layout_height="@dimen/cell_height"
-                android:layout_marginLeft="@dimen/cell_img_margin_left"
-                android:layout_marginTop="@dimen/cell_img_margin_top"
+                android:layout_width="@dimen/hist_tab_img_view_width"
+                android:layout_height="@dimen/hist_tab_img_view_height"
+                android:layout_marginLeft="@dimen/hist_tab_img_margin_left"
+                android:layout_marginTop="@dimen/hist_tab_img_margin_top"
                 android:contentDescription="nothing" />
         </LinearLayout>
 
@@ -242,8 +245,8 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="28dp"
             android:layout_marginBottom="28dp"
-            android:backgroundTint="@color/clickaday_background_color"
-            android:src="@drawable/baseline_photo_library_24" />
+            android:src="@drawable/baseline_photo_library_24"
+            style="@style/ButtonStyle"/>
 
         <Button
             android:id="@+id/PictureActivityButton"
@@ -251,7 +254,8 @@
             android:layout_height="75dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/go_to_activity_photo" />
+            android:text="@string/go_to_activity_photo"
+            style="@style/ButtonStyle"/>
 
     </RelativeLayout>
 

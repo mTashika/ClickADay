@@ -22,28 +22,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Folder"
+            android:gravity="center"
+            style="@style/Title1"
+            />
 
         <EditText
             android:id="@+id/newEditText_change_folder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the new Folder name"
+            android:hint="Folder name"
             android:textColor="@color/black"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/lightGrey"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/okButton_change_folder"
-                style="@style/TextViewOkCancelStyle"
-                android:text="OK" />
-
-            <Button
                 android:id="@+id/cancelButton_change_folder"
                 style="@style/TextViewOkCancelStyle"
                 android:text="Cancel" />
+            <Button
+                android:id="@+id/okButton_change_folder"
+                style="@style/TextViewOkCancelStyle"
+                android:text="OK" />
         </LinearLayout>
     </LinearLayout>
 

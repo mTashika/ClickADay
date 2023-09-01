@@ -2,39 +2,67 @@
 <resources>
     <style name="SmallText">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/clickaday_text1</item>
     </style>
+    <style name="Title1">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/clickaday_text2</item>
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+
+    <style name="Title2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/clickaday_text2</item>
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
+
     <style name="NormalText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/clickaday_text1</item>
+    </style>
+
+    <style name="MenuText">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/clickaday_text2</item>
+    </style>
+
+    <style name="BigText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/clickaday_text1</item>
+    </style>
+    <style name="HistText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/clickaday_text1</item>
     </style>
     <!-- Very Small txt -->
     <style name="SmallItalicText">
-        <item name="android:textSize">7sp</item>
+        <item name="android:textSize">8sp</item>
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/lightGrey</item>
     </style>
+
 
     <!-- Slide Switch -->
     <style name="SlideSwitch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:thumbTint">@color/switchOnColor</item>
-        <item name="android:trackTint">@color/switchOffColor</item>
-
+        <item name="trackTint">@color/clickaday_switch1</item>
+        <item name="thumbTint">@color/clickaday_switch2</item>
     </style>
+
     <!-- Change folder Image Button -->
     <style name="ChangeFoldImButton">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
         <item name="android:src">@drawable/round_sync_24</item>
-        <item name="android:tint">@color/clickaday_background_color</item>
+        <item name="android:tint">@color/clickaday_switch1</item>
         <item name="android:background">@null</item>
     </style>
+
     <!-- Divider -->
     <style name="Divider">
-        <item name="android:layout_height">1dp</item>
-        <item name="android:background">@color/dividerColor</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@color/clickaday_background</item>
     </style>
 
     <!-- Numeric Button -->
@@ -45,20 +73,10 @@
         <item name="android:layout_gravity">fill</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:backgroundTint">@color/clickaday_background_btn3</item>
     </style>
 
-    <!-- Phantom Button -->
-    <style name="PhantomButtonStyle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_gravity">fill</item>
-        <item name="android:gravity">center</item>
-        <item name="android:text">""</item>
-        <item name="android:visibility">invisible</item>
-
-    </style>
     <!-- OK/Cancel Button -->
     <style name="TextViewOkCancelStyle">
         <item name="android:layout_width">wrap_content</item>
@@ -67,16 +85,28 @@
         <item name="android:layout_marginEnd">25dp</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textColor">@color/clickaday_text2</item>
+        <item name="android:backgroundTint">@color/clickaday_background_btn1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/my_font</item>
     </style>
 
 
+    <!-- Standart Button -->
+    <style name="ButtonStyle">
+        <item name="android:textColor">@color/clickaday_text2</item>
+        <item name="android:backgroundTint">@color/clickaday_background_btn1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
 
-
-
-
-
-
-
+    <!-- Button Photo style-->
+    <style name="ButtonPhotoStyle">
+        <item name="android:textColor">@color/clickaday_text2</item>
+        <item name="android:backgroundTint">@color/clickaday_background_btn2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/my_font</item>
+    </style>
 
 
 </resources>

@@ -65,7 +65,7 @@ class ParameterFragmentMenu : Fragment() {
         passwordSwitch.isChecked =
             PreferencesTools.getPrefBool(requireContext(), PreferencesTools.PREF_PASSWORD)
         blurSwitch.isChecked =
-            PreferencesTools.getPrefBool(requireContext(), PreferencesTools.PREF_BLUR_IMG)
+            !PreferencesTools.getPrefBool(requireContext(), PreferencesTools.PREF_BLUR_IMG)
         descriptionSwitch.isChecked =
             PreferencesTools.getPrefBool(requireContext(), PreferencesTools.PREF_DESCRIPTION_IMG)
         folderTxtView.text =
@@ -159,7 +159,7 @@ class ParameterFragmentMenu : Fragment() {
                     actionIfCorrect = {
                         PreferencesTools.savePrefBool(
                             requireContext(),
-                            blurSwitch.isChecked,
+                            !blurSwitch.isChecked,
                             PreferencesTools.PREF_BLUR_IMG
 
                         )
@@ -177,7 +177,7 @@ class ParameterFragmentMenu : Fragment() {
             } else {//there is no password : Save in the preferences
                 PreferencesTools.savePrefBool(
                     requireContext(),
-                    blurSwitch.isChecked,
+                    !blurSwitch.isChecked,
                     PreferencesTools.PREF_BLUR_IMG
                 )
                 returnToMainActivityListener?.launchDisplayImg()

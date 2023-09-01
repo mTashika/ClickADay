@@ -10,7 +10,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/clickaday_background_color"
+    android:background="@color/clickaday_background2"
     android:theme="?attr/actionBarTheme"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"/>

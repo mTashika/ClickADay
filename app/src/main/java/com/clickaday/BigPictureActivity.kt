@@ -22,11 +22,13 @@ class BigPictureActivity : AppCompatActivity() {
     private lateinit var imageViewPager: ViewPager
     private lateinit var imageFiles: List<File>
     private lateinit var closeBtn: ImageButton
+    private lateinit var topTxt: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.big_picture_activity_layout)
         closeBtn = findViewById(R.id.image_btn_close_big_activity)
+        topTxt = findViewById(R.id.top_textview_big_activity)
 
 
         val dayInt = intent.getIntExtra("dayInt", -1)
@@ -39,6 +41,34 @@ class BigPictureActivity : AppCompatActivity() {
         imageFiles = listFile.toList()
         if (imageFiles.isEmpty()) {
             finish()
+        }
+        if(dayInt == -1){
+            topTxt.text=""
+
+        }
+        else{
+            if (dayInt==Calendar.MONDAY){
+                topTxt.text="MONDAY"
+            }
+            else if (dayInt==Calendar.TUESDAY){
+                topTxt.text="TUESDAY"
+            }
+            else if (dayInt==Calendar.WEDNESDAY){
+                topTxt.text="WEDNESDAY"
+            }
+            else if (dayInt==Calendar.THURSDAY){
+                topTxt.text="THURSDAY"
+            }
+            else if (dayInt==Calendar.FRIDAY){
+                topTxt.text="FRIDAY"
+            }
+            else if (dayInt==Calendar.SATURDAY){
+                topTxt.text="SATURDAY"
+            }
+            else if (dayInt==Calendar.SUNDAY){
+                topTxt.text="SUNDAY"
+            }
+
         }
 
         imageViewPager = findViewById(R.id.imageViewPager)

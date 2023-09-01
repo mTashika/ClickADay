@@ -13,11 +13,23 @@
 
     <ImageButton
         android:id="@+id/image_btn_close_big_activity"
+        style="@style/ButtonStyle"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="16dp"
         android:background="@drawable/round_button"
         android:src="@drawable/baseline_close_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/top_textview_big_activity"
+        style="@style/BigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

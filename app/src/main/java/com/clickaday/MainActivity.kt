@@ -80,7 +80,6 @@ class MainActivity : AppCompatActivity(), Interfaces.ReturnToMainActivity {
         }
         updateFolder()
 
-
     }
 
     private fun updateFolder() {

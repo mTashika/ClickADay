@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_constraint_item_menu_parameter"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,13 +12,16 @@
         android:id="@+id/img_background_menu_param"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#88000000" />
+        android:background="#88000000"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <LinearLayout
         android:id="@+id/layout_ref_item_menu_parameter"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
+        android:backgroundTint="@color/white2"
+        android:background="@drawable/background_default"
         android:elevation="2dp"
         android:orientation="vertical"
         android:padding="16dp"
@@ -27,22 +31,25 @@
         <!-- Select password -->
         <LinearLayout
             android:id="@+id/layout_password_selection"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
             app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
-            app:layout_constraintTop_toTopOf="@id/layout_ref_item_menu_parameter">
+            app:layout_constraintTop_toTopOf="@id/layout_ref_item_menu_parameter"
+            android:gravity="start">
 
             <TextView
                 android:id="@+id/text_view_password"
-                style="@style/NormalText"
+                style="@style/MenuText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Password"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-
                 />
+            <Space
+                android:layout_width="21dp"
+                android:layout_height="wrap_content"/>
 
 
             <androidx.appcompat.widget.SwitchCompat
@@ -66,24 +73,29 @@
         <!-- Folder Selection -->
         <LinearLayout
             android:id="@+id/layout_folder_selection"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
             app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
-            app:layout_constraintTop_toBottomOf="@id/divider1">
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            android:gravity="start">
 
             <TextView
                 android:id="@+id/edit_txt_item_menu_changer"
-                style="@style/SmallText"
+                style="@style/MenuText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autofillHints="none"
                 android:enabled="false"
                 android:inputType="text"
                 android:labelFor="@id/image_button"
-                android:text="default folder"
+                android:text="Folder"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+                app:layout_constraintTop_toBottomOf="parent"
+                android:layout_gravity="center"/>
+            <Space
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"/>
 
             <ImageButton
                 android:id="@+id/image_button"
@@ -94,6 +106,7 @@
                 app:layout_constraintStart_toEndOf="@id/edit_txt_item_menu_changer"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
+
 
         <View
 
@@ -107,7 +120,7 @@
         <!-- Blow picture -->
         <LinearLayout
             android:id="@+id/layout_blur_pic_selection"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
             app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
@@ -115,22 +128,22 @@
 
             <TextView
                 android:id="@+id/text_view_blow_pic"
-                style="@style/NormalText"
+                style="@style/MenuText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="blow picture"
+                android:text="Visibility"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
-
-
+            <Space
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_button_blur_pic"
                 style="@style/SlideSwitch"
                 android:checked="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
@@ -143,10 +156,10 @@
             app:layout_constraintStart_toStartOf="@id/divider1"
             app:layout_constraintTop_toBottomOf="@id/layout_blur_pic_selection" />
 
-        <!-- Blow picture -->
+        <!-- Description -->
         <LinearLayout
             android:id="@+id/layout_description_pic_selection"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
             app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
@@ -154,15 +167,17 @@
 
             <TextView
                 android:id="@+id/text_view_description_pic"
-                style="@style/NormalText"
+                style="@style/MenuText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="descr picture"
+                android:text="Description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
 
                 />
-
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_button_description_pic"
@@ -173,20 +188,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
-
-        <!-- Very small text -->
-        <TextView
-            android:id="@+id/italic_txt_version"
-            style="@style/SmallItalicText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Texte très petit et en italique"
-            app:layout_constraintBottom_toBottomOf="@id/layout_ref_item_menu_parameter"
-            app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
-            app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter" />
-
     </LinearLayout>
+    <!-- Very small text -->
+    <TextView
+        android:id="@+id/italic_txt_version"
+        style="@style/SmallItalicText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Texte très petit et en italique"
+        app:layout_constraintBottom_toBottomOf="@id/layout_ref_item_menu_parameter"
+        app:layout_constraintEnd_toEndOf="@id/layout_ref_item_menu_parameter"
+        app:layout_constraintStart_toStartOf="@id/layout_ref_item_menu_parameter"
+        android:layout_marginBottom="5dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

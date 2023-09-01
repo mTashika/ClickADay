@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="color_line">@color/clickaday_background_color2</color>
+    <!--Cell Table Dimension-->
+        <!--Line dimensions-->
+        <dimen name="hist_tab_line_width">4sp</dimen>
+        <dimen name="hist_tab_line_radius">8dp</dimen>
 
-    <color name="color_line">@color/clickaday_background_color</color>
-    <!-- Header-->
-    <dimen name="header_height">35sp</dimen>
-    <dimen name="header_width">61dp</dimen>
-    <dimen name="header_line_width">4sp</dimen>
-    <dimen name="header_radius">0dp</dimen>
+        <!-- Header Dimensions -->
+        <dimen name="hist_tab_header_height">40dp</dimen>
+        <dimen name="hist_tab_header_width">61dp</dimen>
 
-    <!--Cell Table-->
-        <!--Cell disposition-->
-        <dimen name="cell_disp_height">31sp</dimen>
-    <!--Text View-->
-    <dimen name="cell_txt_margin_left">29dp</dimen>
-    <dimen name="cell_txt_margin_right">14dp</dimen>
-    <dimen name="cell_txt_margin_top">8dp</dimen>
-    <!--Image View-->
-    <dimen name="cell_img_margin_left">1dp</dimen>
-    <dimen name="cell_img_margin_right">14dp</dimen>
-    <dimen name="cell_img_margin_top">7dp</dimen>
+        <!-- Cell Dimensions -->
+        <dimen name="hist_tab_cell_height">89dp</dimen>
+        <dimen name="hist_tab_cell_width">61dp</dimen>
 
-        <!--Cell dimensions-->
-        <dimen name="cell_height">85dp</dimen>
-        <dimen name="cell_width">61dp</dimen>
-        <dimen name="cell_line_width">4sp</dimen>
-        <dimen name="cell_radius">0dp</dimen>
-
-        <dimen name="text_view_width">57dp</dimen>
+        <!-- ImageView dimensions -->
+        <dimen name="hist_tab_img_view_height">85dp</dimen>
+        <dimen name="hist_tab_img_view_width">57dp</dimen>
 
 
+    <!-- Useful dimensions -->
+        <!-- Total dimensions -->
+        <dimen name="hist_tab_total_height">121dp</dimen>
+        <dimen name="hist_tab_total_width">427dp</dimen>
 
+        <dimen name="hist_tab_line_horizontal_height_top">49dp</dimen>
+
+        <dimen name="hist_tab_left_line1">60dp</dimen>
+        <dimen name="hist_tab_left_line2">121dp</dimen>
+        <dimen name="hist_tab_left_line3">182dp</dimen>
+        <dimen name="hist_tab_left_line4">243dp</dimen>
+        <dimen name="hist_tab_left_line5">304dp</dimen>
+        <dimen name="hist_tab_left_line6">365dp</dimen>
+
+
+
+
+
+
+    <!--Margin Values-->
+        <!--Text View-->
+        <dimen name="hist_tab_txt_margin_left">32dp</dimen>
+        <dimen name="hist_tab_txt_margin_right">14dp</dimen>
+        <dimen name="hist_tab_txt_margin_top">11dp</dimen>
+        <dimen name="hist_tab_txt_margin_bot">8dp</dimen>
+
+        <!--Image View-->
+        <dimen name="hist_tab_img_margin_left">1dp</dimen>
+        <dimen name="hist_tab_img_margin_right">14dp</dimen>
+        <dimen name="hist_tab_img_margin_top">4dp</dimen>
+        <dimen name="hist_tab_img_margin_bot">7dp</dimen>
 
 </resources>
